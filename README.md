@@ -4,12 +4,11 @@ This repository has a sample set of files which students will interact with duri
 
 ## Tasks
 
-1. We'll start like most academic papers, with a 
-1. Look at the folder `literature`, and just using the `ls` command (and its various flags), tell me which of the files is the longest.
+1. We'll start like most academic papers, with a literature review. Look at the folder `literature`, and just using the `ls` command (and its various flags), tell me which of the files is the longest.
 1. Use the `wc` command to confirm that the largest file also has the largest number of words and lines.
 1. Try both `cat` and `more` to read `literature/thebrotherskaramazov.txt`, and learn quickly why you choose one over the other.
 1. Time to create a poetry anthology. Create a new file called `anthology.txt` which contains the five poems in `literature`, but *not* the Brothers Karamazov, in only one single command.
-1. OK, enough high-minded literature.  Let's dive into file systems.
+1. OK, enough high-minded literature.  Let's dive into file systems. There is an innocent file trapped someplace under `folders/ohnoanotherfolder`.  Find him, and copy him to the `folders` folder *without using a pathname*.  (Hint: dots)
 1. Will has misplaced a very important file called 'youfoundit.txt' inside the hellscape that is the `foldersplosion` folder.  Find it, without using `find` or `locate`.
     - Now find it using `find`.  The man page for this program is missing on datahub, but it's also available at <https://linux.die.net/man/1/find>
 1. Will's CV could use a bit of padding.  Please change the author of 'The Red Wheelbarrow' in `literature/wcw_barrow.txt` to read 'Will Styler, 2022'.  Use `nano` (or your cli editor or choice) to edit this file, or if you're experienced with the command line, find a way to do it without an editor.
