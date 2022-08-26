@@ -1,0 +1,7 @@
+# git activity
+
+Today, you're going to play a bit with git, interacting with, creating, and reverting repos.  Pull this up, just in case <https://training.github.com/downloads/github-git-cheat-sheet.pdf>, and then do the following.
+
+1. List the commits to this (css_bootcamp_2022) repository and find the commit ID for the commit which 'Added git activity'. 
+
+
