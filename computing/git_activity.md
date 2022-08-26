@@ -11,5 +11,6 @@ Today, you're going to play a bit with git, interacting with, creating, and reve
 7. Copy in a file from another folder to your repository, and then try to commit without running add first.  Then, add the file and successfully commit.
 8. On second thought, you don't need that garbage. Get the commit ID of the file before you added that junk, and then clear it out of there by running `git reset (commit id)`.
 9. Go back to the `css_bootcamp_2022` repo.  Use a `git log --follow` to figure out the commits where this file (git_activity.md) changed.
-10. Now, compare two of those commits directly, using `git diff ID1 ID2 git_activity.md`
+10. Now, compare two of those commits directly, using `git diff ID1 ID2 git_activity.md`.  This is how you might figure out what changed from file to file.
+11. You can see if multiple things changed during a commit, by using `git diff` with two IDs but without a specific filename.  Compare the commit labeled 'Making multiple changes' to the one immediately before it.
 
