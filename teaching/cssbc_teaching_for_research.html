@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Will Styler" />
+  <title>Teaching for Research - CSS Bootcamp 2022</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: 1;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style type="text/css">
+  /*
+   * I add this to html files generated with pandoc.
+   * Originally from https://gist.github.com/killercup/5917178
+   */
+
+  html {
+      overflow-y: scroll;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+  }
+
+  header{
+      padding:0em;
+      margin-bottom:0em;
+  }
+
+  body {
+      color: #444;
+      font-family: Helvetica-Neue, Helvetica, Sans;
+      line-height: 1.5;
+      padding: 0.5em;
+      margin: auto;
+      max-width: 55em;
+      background: #fefefe;
+  }
+
+  a {
+      color: #2171b5;
+      text-decoration: underline;
+  }
+
+  tr:nth-child(even) {background: #F8F8F8}
+  tr:nth-child(odd) {background: #FFF}
+
+  a:visited {
+      color: #2171b5;
+      text-decoration: none;
+  }
+
+  a:focus {
+      outline: thin dotted;
+  }
+
+  *::-moz-selection {
+      background: rgba(255, 255, 0, 0.3);
+      color: #000;
+  }
+
+  *::selection {
+      background: rgba(255, 255, 0, 0.3);
+      color: #000;
+  }
+
+  a::-moz-selection {
+      background: rgba(255, 255, 0, 0.3);
+      color: #0645ad;
+  }
+
+  a::selection {
+      background: rgba(255, 255, 0, 0.3);
+      color: #0645ad;
+  }
+
+  p {
+      margin: 0.75em 0;
+  }
+
+  img {
+      max-width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+      color: #111;
+      line-height: 80%;
+      margin-top: 1.45em;
+      margin-bottom: 0.75em;
+      font-weight: normal;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+  }
+
+  danger {
+      color:#ff1900;    
+      font-weight: bold;
+      padding: 1em;
+      font-size: 1em;
+      display: block;
+      border: 2px solid #ff1900;
+  }
+
+
+
+  h1 {
+      font-size: 2em;
+      line-height: 1.25;
+      color:  #084594;
+
+      border-bottom: 2px solid #084594;
+  }
+
+  h1.title {
+      margin-top:0.2em;
+      font-size: 2em;
+      line-height: 1.25;
+      margin-bottom:0em;
+  }
+
+  h2 {
+      font-size: 1.5em;
+          color:  #084594;
+          line-height: 1.55em;
+      border-bottom: 1px solid #83a2c9;
+      padding-bottom: 3px;
+
+  }
+
+  h3 {
+      font-size: 1.2em;
+          line-height: 1.35em;
+  }
+
+
+  h4 {
+      font-size: 1.1em;
+          line-height: 1.25em;
+      border-bottom: 1px dotted #000;
+  }
+
+  h5 {
+      font-size: 1em;
+  }
+
+  h6 {
+      font-size: 0.9em;
+  }
+
+  blockquote {
+      color: #666666;
+      margin: 0;
+      padding-left: 3em;
+      border-left: 0.5em #EEE solid;
+  }
+
+  hr {
+      display: block;
+      height: 2px;
+      border: 0;
+      border-top: 1px solid #aaa;
+      border-bottom: 1px solid #eee;
+      margin: 1em 0;
+      padding: 0;
+  }
+
+  pre, code, kbd, samp {
+      color: #000;
+      font-family: monospace, monospace;
+      _font-family: 'courier new', monospace;
+      font-size: 0.98em;
+  }
+
+  pre {
+      white-space: pre;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+  }
+
+  .answer {
+      color:#CC0033;
+      font-style:italic;
+  }
+
+  b, strong {
+      font-weight: bold;
+  }
+
+  dfn {
+      font-style: italic;
+  }
+
+  ins {
+      background: #ff9;
+      color: #000;
+      text-decoration: none;
+  }
+
+  mark {
+      background: #ff0;
+      color: #000;
+      font-style: italic;
+      font-weight: bold;
+  }
+
+  sub, sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline;
+  }
+
+  sup {
+      top: -0.5em;
+  }
+
+  sub {
+      bottom: -0.25em;
+  }
+
+  ul, ol {
+      margin: 0.5em 0;
+      padding: 0em 0em 0em 1em;
+  }
+
+  li p:last-child {
+      margin-bottom: 0;
+  }
+
+  ul ul, ol ol {
+      margin: .3em 0;
+  }
+
+  dl {
+      margin-bottom: 1em;
+  }
+
+  dt {
+      font-weight: bold;
+      margin-bottom: .8em;
+  }
+
+  dd {
+      margin: 0 0 .8em 2em;
+  }
+
+  dd:last-child {
+      margin-bottom: 0;
+  }
+
+  img {
+      border: 0;
+      -ms-interpolation-mode: bicubic;
+      vertical-align: middle;
+  }
+
+  figure {
+      display: block;
+      text-align: center;
+      margin: 1em 0;
+  }
+
+  figure img {
+      border: none;
+      margin: 0 auto;
+  }
+
+  figcaption {
+      font-size: 0.8em;
+      font-style: italic;
+      margin: 0 0 .8em;
+  }
+
+  table {
+      margin-bottom: 2em;
+      border-bottom: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+      border-spacing: 0;
+      border-collapse: collapse;
+  }
+
+  table th {
+      padding: .2em 1em;
+      background-color: #eee;
+      border-top: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+  }
+
+  table td {
+      padding: .2em 1em;
+      border-top: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+      vertical-align: top;
+  }
+
+  .author {
+      font-size: 1.2em;
+      text-align: center;
+  }
+
+  @media only screen and (min-width: 480px) {
+      body {
+  	font-size: 14px;
+      }
+  }
+  @media only screen and (min-width: 768px) {
+      body {
+  	font-size: 16px;
+      }
+  }
+  @media print {
+      * {
+  	background: transparent !important;
+  	color: black !important;
+  	filter: none !important;
+  	-ms-filter: none !important;
+      }
+
+      body {
+  	font-size: 12pt;
+  	max-width: 100%;
+      }
+
+      a, a:visited {
+  	text-decoration: underline;
+      }
+
+      hr {
+  	height: 1px;
+  	border: 0;
+  	border-bottom: 1px solid black;
+      }
+
+      a[href]:after {
+  	content: " (" attr(href) ")";
+      }
+
+      abbr[title]:after {
+  	content: " (" attr(title) ")";
+      }
+
+      .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+  	content: "";
+      }
+
+      pre, blockquote {
+  	border: 1px solid #999;
+  	padding-right: 1em;
+  	page-break-inside: avoid;
+      }
+
+      tr, img {
+  	page-break-inside: avoid;
+      }
+
+      img {
+  	max-width: 100% !important;
+      }
+
+      @page :left {
+  	margin: 15mm 20mm 15mm 10mm;
+      }
+
+      @page :right {
+  	margin: 15mm 10mm 15mm 20mm;
+      }
+
+      p, h2, h3 {
+  	orphans: 3;
+  	widows: 3;
+      }
+
+      h2, h3 {
+  	page-break-after: avoid;
+      }
+  }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Teaching for Research - CSS Bootcamp 2022</h1>
+<p class="author">Will Styler</p>
+</header>
+<h1 id="youre-going-to-be-teaching-damnit">You’re going to be teaching,
+damnit</h1>
+<ul>
+<li>Onboarding/Mentoring Colleagues</li>
+<li>Explaining new approaches</li>
+<li>Presenting results and problems</li>
+<li>Writing research papers and final reports</li>
+<li>Applications (e.g. grants, grad school, cover letters)</li>
+<li>“So what do you do?”</li>
+<li>When you inevitably go back to school for your Linguistics Ph.D</li>
+</ul>
+<h1 id="good-and-bad-teaching">Good and Bad Teaching</h1>
+<h2 id="discussion-what-works-well-what-works-well-for-you">Discussion:
+What works well? What works well <em>for you</em>?</h2>
+<h2 id="discussion-what-doesnt-work-well">Discussion: What doesn’t work
+well?</h2>
+<h2 id="discussion-how-have-you-seen-teaching-go-wrong">Discussion: How
+have you seen teaching go wrong?</h2>
+<h1 id="generally-useful-tips-for-teaching-anything">Generally useful
+tips for teaching anything</h1>
+<ol type="1">
+<li><strong>Consider your audience’s background knowledge</strong>
+<ul>
+<li>What do people know that will work for (and against) them as they
+learn?</li>
+<li>Gauge or estimate prior knowledge</li>
+<li>Specifically target unhelpful intuitions or knowledge</li>
+</ul></li>
+<li><strong>Think about how what you’re sharing fits into
+schemas</strong>
+<ul>
+<li>Segment things, explain them clearly, summarize, then build on
+that</li>
+<li>Teaching is a house, built on foundations upwards</li>
+<li>Giving a pattern is better than giving 100 facts</li>
+<li>Use boundary cases to explain the boundaries</li>
+<li><em>“Here is how you should organize what I’m telling you”</em></li>
+</ul></li>
+<li><strong>Think about the story and narrative arc and explain
+it</strong>
+<ul>
+<li>The order in which you present things has very real effects</li>
+<li>You’re telling a story here, so think about where it starts, ends,
+and goes in the middle</li>
+<li>Manipulate surprise, expectation, and emotional state to positive
+end</li>
+<li>Explain your structure, regularly, and repeatedly</li>
+<li>Give pauses where it makes the most sense</li>
+</ul></li>
+<li><strong>Choose the best approach for what you need to teach</strong>
+<ul>
+<li><em>Micro level</em>: Graphs vs. Text vs. Tables vs. Statistical
+Tests</li>
+<li><em>Macro level</em>: Paper vs. Slides vs. Poster vs. Discussion
+vs. Website vs. Video</li>
+</ul></li>
+<li><strong>Make people give a damn</strong>
+<ul>
+<li>If people don’t understand why they’re learning, they’ll do a worse
+job</li>
+<li>Make what you’re sharing relevant from the get-go</li>
+<li>Situate learning in their lives and needs</li>
+<li>Show you value them as humans and see their needs</li>
+</ul></li>
+<li><strong>Active Learning is helpful</strong>
+<ul>
+<li>Most people learn better when they have to <em>do</em> things with
+what they learned</li>
+<li>Keep people engaged, rather than passive</li>
+<li>Consider adding activities (e.g. direct application, targeted
+discussions, practicum)</li>
+<li>Making people teach makes them learn, and group work forces
+teaching</li>
+</ul></li>
+<li><strong>Make hard decisions about how much to teach</strong>
+<ul>
+<li>Breadth vs. Depth</li>
+<li>Adding content does not always add learning</li>
+<li>Consider what they need to <em>know</em> vs. what they can look up
+later</li>
+<li>‘What needs to go in long term vs. working memory?’</li>
+<li>You’re often well served by reducing the scope</li>
+</ul></li>
+<li><strong>Steal from the folks you respect</strong>
+<ul>
+<li>You won’t feel like a good teacher until long after you are one</li>
+<li>Ask yourself ‘How would [my favorite professor] talk about
+this?’</li>
+<li>‘What would Lise Menn do?’</li>
+<li>Figure out where your style needs to diverge from their</li>
+</ul></li>
+<li><strong>Mind the power gradients</strong>
+<ul>
+<li>Consider backgrounds, traumas, fears, and concerns as you design
+your materials</li>
+<li>Remember that ‘light correction’ lands differently for different
+people</li>
+<li>Remember that some students are very afraid to have questions or
+need help</li>
+</ul></li>
+</ol>
+<p>For more information on how people learn, I recommend <a
+href="https://wstyler.ucsd.edu/500/howpeoplelearn.pdf">‘How People
+Learn’ from <em>Transforming STEM Teaching</em> at UCB, 2017</a></p>
+<h1 id="strengths-and-weaknesses-of-teaching-types">Strengths and
+Weaknesses of Teaching Types</h1>
+<p>For each of the below, let’s consider strengths and weaknesses, best
+approaches, and other details:</p>
+<ul>
+<li>One-on-One Mentoring/Training</li>
+<li>Small Group Seminars (&lt;10 people)</li>
+<li>‘Boardwork’ style slide-less teaching</li>
+<li>Slide-based presentations</li>
+<li>Creating an interactive website</li>
+<li>Writing a research paper or project report for dead-tree
+publication</li>
+<li>Making a video (e.g. YouTube, TEDTalks)</li>
+</ul>
+<h1 id="tips-for-different-teaching-types">Tips for different teaching
+types</h1>
+<h2 id="one-on-one-mentoring">One-on-One Mentoring</h2>
+<ul>
+<li>Give yourself a bulleted agenda to organize what you’re
+teaching</li>
+<li>Prepare examples and ‘practice’ problems ahead of time</li>
+<li>Start by figuring out what they already know</li>
+<li>Be prepared to flex from the agenda as needed</li>
+<li>Use slides sparingly</li>
+</ul>
+<h2 id="seminars-and-small-discussions">Seminars and Small
+Discussions</h2>
+<ul>
+<li>Pose questions, rather than giving answers</li>
+<li>Elicit <em>more</em> from the students, rather than less</li>
+<li>Don’t fear silence, give people time to think</li>
+<li>Stay engaged</li>
+<li>Don’t try and steer too much
+<ul>
+<li>Just use the gas and brakes where prudent</li>
+<li>If a student’s taking things in a productive direction, egg them
+on</li>
+<li>If a student’s off doing their own thing, digressing, or dominating,
+nudge back and ask for other voices</li>
+</ul></li>
+<li>Jump in to correct mistakes, resolve arguments, and move things
+on</li>
+<li>Consider a handout (digital or analog)</li>
+</ul>
+<h2 id="poster-presentations">Poster Presentations</h2>
+<ul>
+<li>Keep it quick</li>
+<li>Prepare explanations with narrative arcs of different lengths
+<ul>
+<li>2-4 minute full walkthrough</li>
+<li>30 second overview</li>
+</ul></li>
+<li>Don’t hold hostages</li>
+<li>Less words is generally better</li>
+<li>Your poster needs to work even with you not at it.</li>
+<li>Make it visually interesting</li>
+</ul>
+<h3 id="short-talks">Short Talks</h3>
+<ul>
+<li>Know your audience
+<ul>
+<li>How specialized are they?</li>
+<li>How much background knowledge do they have?</li>
+<li>Do they know the literature?</li>
+</ul></li>
+<li>Know your story
+<ul>
+<li>You need to be purpose driven</li>
+<li>3-5 take-away points</li>
+<li>Explain the plan in an early slide</li>
+<li>Wrap up by summarizing</li>
+</ul></li>
+<li>Thin your talk
+<ul>
+<li>Say as little as possible</li>
+<li>Polish your plots</li>
+<li>Complicated plots slow you down</li>
+<li>“If you’d like to talk about this part of the study, come grab me
+afterwards”</li>
+</ul></li>
+<li>Use the Mic if provided</li>
+<li>Plan for common questions</li>
+<li>Demo your talk
+<ul>
+<li>A few times alone, once for a group, then a few more times
+alone</li>
+<li>Make sure you’re consistently hitting the time target</li>
+<li>Leave time for questions</li>
+</ul></li>
+<li>Keep some back-pocket slides</li>
+</ul>
+<h3 id="presentation-design">Presentation Design</h3>
+<p>For much more of this, see my <a
+href="https://savethevowels.org/presentationdesign">Thoughts on
+Effective Presentation Design</a>.</p>
+<p><strong>Executive Summary:</strong></p>
+<ul>
+<li>Consider how you use slides
+<ul>
+<li>‘Many short slides’ vs. ‘5 ten minute slides’</li>
+</ul></li>
+<li>Use animations, images, and video only in service of the talk
+<ul>
+<li>If it’s not helping, it may be hurting</li>
+</ul></li>
+<li>Steal styles, ideas, and structures from people whose teaching you
+respect</li>
+<li>Use humor where prudent, and consider your teaching persona</li>
+<li>Aim for legibility and accessibility, and use formatting
+consistently</li>
+<li><em>DO NOT</em> just read from your slides or presenter notes
+<ul>
+<li>Perform your notes, don’t read them</li>
+</ul></li>
+</ul>
+<h1 id="writing-effective-papers-and-reports">Writing Effective Papers
+and Reports</h1>
+<h2 id="discussion-what-makes-a-readable-paper">Discussion: What makes a
+readable paper?</h2>
+<h2 id="discussion-what-makes-an-unreadable-paper">Discussion: What
+makes an unreadable paper?</h2>
+<h2 id="writing-papers-should-be-teaching-damnit">Writing papers should
+be teaching, damnit</h2>
+<ul>
+<li>Still consider background knowledge</li>
+<li>Explain concepts the first time they’re used</li>
+<li>If a method isn’t well-known in your world, teach a bit about it
+first
+<ul>
+<li>Be explicit that you’re doing this, and lean into it</li>
+</ul></li>
+<li>Still consider structure and narrative arc, and make structure
+explicit
+<ul>
+<li>“In this section, we’ll establish that shark attack cause increased
+ice cream sales, such that we can then measure the effect of the movie
+‘Jaws’ on Ice Cream Maker production in 1975…”</li>
+</ul></li>
+<li>Don’t hesitate to do weird things if it helps the learning</li>
+<li>Think about proving your point in many ways
+<ul>
+<li>There’s no harm in showing the effect in a graph, then solidifying
+it with a statistical test</li>
+<li>Reinforce your point(s) in the intro, conclusion, and interim
+summaries</li>
+</ul></li>
+<li>Leave people with the ‘important takeaways’
+<ul>
+<li>Don’t lose track of the forest for the trees</li>
+</ul></li>
+<li><em>Teach until somebody makes you stop</em>
+<ul>
+<li>There’s very little harm in writing readable, well-explained
+text</li>
+</ul></li>
+</ul>
+<h2 id="general-advice">General Advice</h2>
+<ul>
+<li>A good paper is like a ninja: Small enough to move quickly, but big
+enough to pack a punch</li>
+<li>Always make clear what we already know and how we got there
+<ul>
+<li>Citations should be easily followable</li>
+</ul></li>
+<li>Look to the papers you’ve examined for structures that work
+well</li>
+<li>Break sections apart to minimize working memory use
+<ul>
+<li>Make your case in parts, rather than trying to do everything at
+once, and refer back</li>
+<li>“As we established in Section 2.4, shark attacks cause increased ice
+cream sales…”</li>
+</ul></li>
+<li>Consider using LaTeX, Markdown, or other approaches to make
+formatting/numbering/citing automatic
+<ul>
+<li>… and because they’re strictly better than Microsoft Word and GUI
+Editors</li>
+</ul></li>
+</ul>
+<h2 id="formatting-details">Formatting details</h2>
+<ul>
+<li>Use (any) sane format
+<ul>
+<li>Sometimes journals or companies specify a style guide</li>
+</ul></li>
+<li>Make your formatting mean things
+<ul>
+<li>Differently formatted text should be a different kind of text</li>
+</ul></li>
+<li>Make your graphs relatively easy to understand
+<ul>
+<li>Several sparse graphs may be easier than one rich one</li>
+</ul></li>
+<li>Somebody will always complain about how you present your stats
+<ul>
+<li>‘Supplementary Materials’ are a beautiful thing (‘See Supplementary
+Materials, Section 10 for full model specification and output’)</li>
+</ul></li>
+<li>Consider colorblindness and black-and-white printing when making
+graphs</li>
+</ul>
+<h1 id="your-teaching-presentation">Your Teaching Presentation</h1>
+<p>For Thursday, you’re being asked to teach us about your research or
+research interests. Potential topics could include:</p>
+<ul>
+<li>Tell us about project you’ve worked on before that’s along the lines
+of what you want to keep doing, with a bit of background, method, and
+result.</li>
+<li>Talk to us about the questions you want to ask, with background on
+the area(s) they’re based in and why they’re interesting</li>
+<li>Teach us a few basic fundamentals about your favorite methodology or
+subfield (e.g. signal detection theory, or sociolinguistics)</li>
+<li>Tell us about a particularly interesting phenomenon related to your
+research interests (e.g. vowel nasality)</li>
+</ul>
+<p>You’re effectively emulating the Ph.D Mentor presentations, with a
+bit more diversity of topic. You can present however you’d like, using a
+discussion, boardwork, a handout, or slides. Plan to teach for around 5
+minutes, and then we’ll talk about how it went with a focus on helping
+you grow.</p>
+<p>It’s OK if you feel nervous, this is a safe space, we’re all here to
+learn.</p>
+</body>
+</html>
