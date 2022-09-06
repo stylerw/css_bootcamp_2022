@@ -111,7 +111,7 @@ For each of the below, let's consider strengths and weaknesses, best approaches,
 - Your poster needs to work even with you not at it.
 - Make it visually interesting
 
-### Short Talks
+## Short Talks
 - Know your audience
     - How specialized are they?
     - How much background knowledge do they have?
@@ -134,7 +134,7 @@ For each of the below, let's consider strengths and weaknesses, best approaches,
     - Leave time for questions
 - Keep some back-pocket slides
 
-### Presentation Design
+## Presentation Design
 
 For much more of this, see my [Thoughts on Effective Presentation Design](https://savethevowels.org/presentationdesign).
 
