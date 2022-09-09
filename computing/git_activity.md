@@ -4,7 +4,7 @@ Today, you're going to play a bit with git, interacting with, creating, and reve
 
 1. List the commits to this (css_bootcamp_2022) repository and find the commit ID for the commit which 'Added git activity'.
 2. Shortly after, Will committed a deep, dark secret to the repository in the css_bootcamp_2022/computing folder.  He then got cold feet, and deleted his secret. Use git checkout to reload the state of the repository at the time of that commit, and read his deep dark secret using `vim`.
-3. Now that you're SHOCKED, revert to the main with `git reset --hard` which will delete ALL CHANGES and return to the latest commit.
+3. Now that you're SHOCKED, revert to the main with `git checkout [latest commit]` which will delete ALL CHANGES and return to the latest commit.
 4. The file 'boringfile.txt' wasn't always so boring.  Use `git log --follow --name-status` to find its original filenames and the commits in which it changed.
 5. Now, go to your home directory and make a new folder.  Initialize a new git repo there.
 6. Create a file with some text in `vim` or `nano`, and then add and commit that file with a 'Hello World' message.
