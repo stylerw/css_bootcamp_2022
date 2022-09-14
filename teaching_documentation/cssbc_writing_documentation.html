@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Will Styler" />
+  <title>Writing Effective Documentation - CSS Bootcamp</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style type="text/css">
+  /*
+   * I add this to html files generated with pandoc.
+   * Originally from https://gist.github.com/killercup/5917178
+   */
+
+  html {
+      overflow-y: scroll;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+  }
+
+  header{
+      padding:0em;
+      margin-bottom:0em;
+  }
+
+  body {
+      color: #444;
+      font-family: Helvetica-Neue, Helvetica, Sans;
+      line-height: 1.5;
+      padding: 0.5em;
+      margin: auto;
+      max-width: 55em;
+      background: #fefefe;
+  }
+
+  a {
+      color: #2171b5;
+      text-decoration: underline;
+  }
+
+  tr:nth-child(even) {background: #F8F8F8}
+  tr:nth-child(odd) {background: #FFF}
+
+  a:visited {
+      color: #2171b5;
+      text-decoration: none;
+  }
+
+  a:focus {
+      outline: thin dotted;
+  }
+
+  *::-moz-selection {
+      background: rgba(255, 255, 0, 0.3);
+      color: #000;
+  }
+
+  *::selection {
+      background: rgba(255, 255, 0, 0.3);
+      color: #000;
+  }
+
+  a::-moz-selection {
+      background: rgba(255, 255, 0, 0.3);
+      color: #0645ad;
+  }
+
+  a::selection {
+      background: rgba(255, 255, 0, 0.3);
+      color: #0645ad;
+  }
+
+  p {
+      margin: 0.75em 0;
+  }
+
+  img {
+      max-width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+      color: #111;
+      line-height: 80%;
+      margin-top: 1.45em;
+      margin-bottom: 0.75em;
+      font-weight: normal;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+  }
+
+  danger {
+      color:#ff1900;    
+      font-weight: bold;
+      padding: 1em;
+      font-size: 1em;
+      display: block;
+      border: 2px solid #ff1900;
+  }
+
+
+
+  h1 {
+      font-size: 2em;
+      line-height: 1.25;
+      color:  #084594;
+
+      border-bottom: 2px solid #084594;
+  }
+
+  h1.title {
+      margin-top:0.2em;
+      font-size: 2em;
+      line-height: 1.25;
+      margin-bottom:0em;
+  }
+
+  h2 {
+      font-size: 1.5em;
+          color:  #084594;
+          line-height: 1.55em;
+      border-bottom: 1px solid #83a2c9;
+      padding-bottom: 3px;
+
+  }
+
+  h3 {
+      font-size: 1.2em;
+          line-height: 1.35em;
+  }
+
+
+  h4 {
+      font-size: 1.1em;
+          line-height: 1.25em;
+      border-bottom: 1px dotted #000;
+  }
+
+  h5 {
+      font-size: 1em;
+  }
+
+  h6 {
+      font-size: 0.9em;
+  }
+
+  blockquote {
+      color: #666666;
+      margin: 0;
+      padding-left: 3em;
+      border-left: 0.5em #EEE solid;
+  }
+
+  hr {
+      display: block;
+      height: 2px;
+      border: 0;
+      border-top: 1px solid #aaa;
+      border-bottom: 1px solid #eee;
+      margin: 1em 0;
+      padding: 0;
+  }
+
+  pre, code, kbd, samp {
+      color: #000;
+      font-family: monospace, monospace;
+      _font-family: 'courier new', monospace;
+      font-size: 0.98em;
+  }
+
+  pre {
+      white-space: pre;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+  }
+
+  .answer {
+      color:#CC0033;
+      font-style:italic;
+  }
+
+  b, strong {
+      font-weight: bold;
+  }
+
+  dfn {
+      font-style: italic;
+  }
+
+  ins {
+      background: #ff9;
+      color: #000;
+      text-decoration: none;
+  }
+
+  mark {
+      background: #ff0;
+      color: #000;
+      font-style: italic;
+      font-weight: bold;
+  }
+
+  sub, sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline;
+  }
+
+  sup {
+      top: -0.5em;
+  }
+
+  sub {
+      bottom: -0.25em;
+  }
+
+  ul, ol {
+      margin: 0.5em 0;
+      padding: 0em 0em 0em 1em;
+  }
+
+  li p:last-child {
+      margin-bottom: 0;
+  }
+
+  ul ul, ol ol {
+      margin: .3em 0;
+  }
+
+  dl {
+      margin-bottom: 1em;
+  }
+
+  dt {
+      font-weight: bold;
+      margin-bottom: .8em;
+  }
+
+  dd {
+      margin: 0 0 .8em 2em;
+  }
+
+  dd:last-child {
+      margin-bottom: 0;
+  }
+
+  img {
+      border: 0;
+      -ms-interpolation-mode: bicubic;
+      vertical-align: middle;
+  }
+
+  figure {
+      display: block;
+      text-align: center;
+      margin: 1em 0;
+  }
+
+  figure img {
+      border: none;
+      margin: 0 auto;
+  }
+
+  figcaption {
+      font-size: 0.8em;
+      font-style: italic;
+      margin: 0 0 .8em;
+  }
+
+  table {
+      margin-bottom: 2em;
+      border-bottom: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+      border-spacing: 0;
+      border-collapse: collapse;
+  }
+
+  table th {
+      padding: .2em 1em;
+      background-color: #eee;
+      border-top: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+  }
+
+  table td {
+      padding: .2em 1em;
+      border-top: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+      vertical-align: top;
+  }
+
+  .author {
+      font-size: 1.2em;
+      text-align: center;
+  }
+
+  @media only screen and (min-width: 480px) {
+      body {
+  	font-size: 14px;
+      }
+  }
+  @media only screen and (min-width: 768px) {
+      body {
+  	font-size: 16px;
+      }
+  }
+  @media print {
+      * {
+  	background: transparent !important;
+  	color: black !important;
+  	filter: none !important;
+  	-ms-filter: none !important;
+      }
+
+      body {
+  	font-size: 12pt;
+  	max-width: 100%;
+      }
+
+      a, a:visited {
+  	text-decoration: underline;
+      }
+
+      hr {
+  	height: 1px;
+  	border: 0;
+  	border-bottom: 1px solid black;
+      }
+
+      a[href]:after {
+  	content: " (" attr(href) ")";
+      }
+
+      abbr[title]:after {
+  	content: " (" attr(title) ")";
+      }
+
+      .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+  	content: "";
+      }
+
+      pre, blockquote {
+  	border: 1px solid #999;
+  	padding-right: 1em;
+  	page-break-inside: avoid;
+      }
+
+      tr, img {
+  	page-break-inside: avoid;
+      }
+
+      img {
+  	max-width: 100% !important;
+      }
+
+      @page :left {
+  	margin: 15mm 20mm 15mm 10mm;
+      }
+
+      @page :right {
+  	margin: 15mm 10mm 15mm 20mm;
+      }
+
+      p, h2, h3 {
+  	orphans: 3;
+  	widows: 3;
+      }
+
+      h2, h3 {
+  	page-break-after: avoid;
+      }
+  }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Writing Effective Documentation - CSS Bootcamp</h1>
+<p class="author">Will Styler</p>
+</header>
+<p>This document is just a summary of Will’s take on how to write
+documentation that’s worth a damn.</p>
+<h1 id="writing-good-documentation">Writing Good Documentation</h1>
+<h2
+id="what-kinds-of-things-to-include-in-documenting-a-research-procedure">What
+kinds of things to include in documenting a research procedure</h2>
+<p>When writing good documentation, it’s valuable to include a variety
+of <em>kinds</em> of documentation. A few worthwhile considerations are
+to include:</p>
+<ul>
+<li>Overviews
+<ul>
+<li>“This chunk of code is written to do the following ten things, in
+order”</li>
+<li>“This experimental protocol will generate, for each participant, a
+set of eyetracking trials (Section 2), an acoustic recording (Section
+3), an airflow recording (Section 4), and a sociolinguistic interview
+(Section 5)”</li>
+</ul></li>
+<li>Definitions
+<ul>
+<li>“Host Laptop - The Black Dell Laptop which comes with the
+Eye-Tracker”</li>
+</ul></li>
+<li>Checklists
+<ul>
+<li>“These are the necessary preparations you’ll need to make in order
+to accomplish this task”</li>
+<li>Include if statements for common problems, “You should see “Desktop
+Remote Monocular 25mm” in the upper right corner of the screen. If not,
+see Section 7.3 for instructions to repair”</li>
+</ul></li>
+<li>Walkthroughs
+<ul>
+<li>Step-by-step, granular walkthroughs of difficult or complicated
+analysis or data collection steps.<br />
+</li>
+<li>Write it such that somebody who had never done the task would have a
+fighting chance of accomplishing it</li>
+</ul></li>
+<li>Pitfalls
+<ul>
+<li>“It makes a lot of sense at first to do this thing, but if you do,
+you enter a world of suffering unlike anything you can imagine”</li>
+<li>“If you turn the control computer on before the eyetracker, it will
+not be able to find the eyetracker”</li>
+</ul></li>
+<li>Verbal scripts
+<ul>
+<li>If you’re working with humans, don’t hesitate to offer scripted
+responses to common questions or situations for inexperienced
+experimenters. “In this case, say something like…”</li>
+</ul></li>
+<li>Troubleshooting
+<ul>
+<li>Watch somebody else do the tasks, and make note of areas where they
+struggle or problems they face</li>
+<li>Explain what to do for (or at least the meaning of) errors and error
+messages</li>
+<li>Give hints or solutions for anything you needed time to solve that
+might come up again</li>
+</ul></li>
+<li>Version History
+<ul>
+<li>This helps people ‘catch up’ on what they’ve missed</li>
+</ul></li>
+<li>Metadata
+<ul>
+<li>If researchers should be collecting metadata (e.g. URL, date of
+capture, etc), what are they storing and where?</li>
+</ul></li>
+<li>Screenshots
+<ul>
+<li>If you’re using an interface, explain where to click!</li>
+</ul></li>
+<li>What else?</li>
+</ul>
+<h2 id="what-kinds-of-things-to-include-when-documenting-code">What
+kinds of things to include when documenting code</h2>
+<p>When documenting code, many of the same ideas above still make sense.
+But a few specific things are worth noting:</p>
+<ul>
+<li>“Small but critical” bits of code
+<ul>
+<li>“This is just one line, but without this, we can’t do any of the
+position calculation”</li>
+</ul></li>
+<li>Notes of fragility
+<ul>
+<li>“This is why the process will fail if the input value is
+negative”</li>
+</ul></li>
+<li>Pitfalls for future coders
+<ul>
+<li>Seemingly innocuous ‘optimizations’ of your code which cause
+everything to fail</li>
+<li>“This feels unnecessary, but it turns out that…”</li>
+</ul></li>
+<li>Simple descriptive statements about what lines (or blocks) of code
+are doing
+<ul>
+<li>“This next chunk sanitizes the names to lowercase, removes titles,
+and stores them in a dictionary”</li>
+</ul></li>
+</ul>
+<h2
+id="what-kinds-of-things-to-include-when-documenting-an-analysis">What
+kinds of things to include when documenting an analysis</h2>
+<p>When writing a Jupyter Notebook or writing documentation of your
+analysis for future release or public analysis, make sure to
+include:</p>
+<ul>
+<li>Explicit descriptions of each variable in the dataframe and their
+units (where relevant)
+<ul>
+<li>“<code>a1p0_comp</code> is a measurement of A1 (the harmonic under
+F1) minus P0 (here, the highest of H1 or H2) using the compensation
+function described in Chen 1997”</li>
+</ul></li>
+<li>Version numbers for critical packages</li>
+<li>What a file contains, each time you read one in
+<ul>
+<li>“rawdata.csv contains a dataframe which was generated from our
+airflow capture script containing all participants”</li>
+</ul></li>
+<li>Highlight the <em>most important</em> elements of an analysis
+<ul>
+<li>“The key takeaway from the graph below is…”</li>
+<li>“The number we care about here is…”</li>
+</ul></li>
+<li><strong>Do not copy and paste figures, tables, and numbers</strong>
+<ul>
+<li>Save figures, variables, and tables to files and import them</li>
+</ul></li>
+</ul>
+<h1 id="how-to-create-documentation">How to create documentation</h1>
+<h2 id="dont-use-word">Don’t use Word</h2>
+<p>Seriously, <strong>just don’t</strong>. Documents have patterns of
+formatting which should be consistent and modifiable easily across the
+whole document, rather than needing to be specified for <em>every single
+heading</em>. You want to be in charge of things like font type,
+indentation, lists, and more, rather than a ‘helpful wizard’ fighting
+you every step of the way. You don’t want adding a small image to mess
+up your entire document. And most of all, you don’t want to be in charge
+of things like numbering sections, managing references, generating
+tables of contents, adhering to style guides, and more.</p>
+<p>Word makes sense for people who don’t code and want to ‘make these
+letters big and those ones small and then print it and give it to their
+grandchildren to web it onto the facebook’. You are past this. Be past
+this. Your time is worth more than doing things in Word.</p>
+<h2 id="markdown">Markdown</h2>
+<p><a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> is an
+excellent formatting language for plaintext documents originally
+developed by <a href="https://daringfireball.net/">John Gruber</a> and
+<a href="https://en.wikipedia.org/wiki/Aaron_Swartz">Aaron Swartz</a> in
+the early 2000s.</p>
+<p>It focuses on using ASCII symbols within plaintext documents to
+specify formatting. There are many ‘flavors’ of Markdown, and many
+syntax guides out there for it. Most use <a
+href="https://daringfireball.net/projects/markdown/syntax">a set of
+syntax basics derived from this</a> with particular extensions</p>
+<p>Markdown allows headers (with levels denominated with the number of #
+symbols), allows <em>italics</em>, <strong>bold</strong>,
+<code>code blocks</code>, and more</p>
+<ul>
+<li>Bulleted lists work</li>
+<li>Bulleted lists work</li>
+<li>Bulleted lists work</li>
+</ul>
+<ol type="1">
+<li>So do numbered lists</li>
+<li>You don’t have to actually change the numbers</li>
+<li>It’ll work anyways</li>
+</ol>
+<blockquote>
+<p>You can make blockquotes of arbitrary length</p>
+</blockquote>
+<pre><code>echo &quot;You can also make code blocks&quot;</code></pre>
+<p>With Markdown, you can also intersperse bits of HTML to insert links,
+detailed images with CSS (cascading style sheets), or otherwise. You can
+also use HTML to make tables if you’re exporting to HTML or slides, or
+use the native Markdown table format (which is a bit awkward, but which
+converts to LaTeX cleanly). <a href="https://tablesgenerator.com/"
+class="uri">https://tablesgenerator.com/</a> is a nice, free tool for
+swapping formats of a given table. Here’s a sample of markdown code for
+a table:</p>
+<pre><code>|              | Frog           | Dog            | Rabbit        | Velociraptor   |
+|--------------|----------------|----------------|---------------|----------------|
+| Frog         | Frog           | Drog           | Frabbit       | Velociribbeter |
+| Dog          | Drog           | Dog            | Roggo         | Veldogciraptor |
+| Rabbit       | Frabbit        | Roggo          | Rabbit        | Velocirabbitor |
+| Velociraptor | Velociribbeter | Veldogciraptor | Velocirabbitor| Velociraptor   |
+</code></pre>
+<p>If you’re using a Markdown program which supports converting to
+LaTeX, you can even include chunks of LaTeX. This allows you to use
+BibTeX references, typeset math, and more.</p>
+<p><span
+class="math inline">∫<sub>0</sub><sup>∞</sup>e<sup>−<em>x</em></sup> d<em>x</em></span></p>
+<p><span class="math inline">$\displaystyle\sum_{i=1}^{10}
+t_i$</span></p>
+<p>Markdown is a really, really effective way to generate large amounts
+of formatted text without messing around with awkward GUI editors. It’s
+faster than writing raw LaTeX (<strong>italics</strong> rather than ),
+it’s readily understood by many programs and interfaces (e.g. github,
+Discord, <a href="https://obsidian.md/">obsidian</a>, pandoc, <a
+href="https://revealjs.com/">reveal.js</a>), and it’s very fluid,
+allowing you to ‘just write’ and let the formatting take care of
+itself.</p>
+<h2 id="generating-documents-from-markdown">Generating Documents from
+Markdown</h2>
+<p>There exist roughly as many Markdown parsers and renderers as grains
+of sand on your average beach. Most of them are fine. Some of them
+support different standards or flavors of markdown. Github has one built
+in, which isn’t bad.</p>
+<p>The best of them is <a href="https://pandoc.org/">Pandoc</a>. It
+turns Markdown of several flavors into HTML, EPUB, LaTeX, PDF (via TeX),
+reveal.js and other slide standards, Jupyter notebooks, Microsoft Word
+(if you hate yourself), and more. It is free and GPL licensed. It is my
+favorite software. I’ve used Pandoc to write my dissertation, to write
+several articles in journals, to write and maintain my website, my
+lecture slides, and more.</p>
+<p>Using Pandoc is very easy: You call pandoc with an input file and
+output filename. But it’s powerful. You can give it stylesheets for HTML
+and templates for LaTeX. You can (and should!) incorporate it into shell
+scripts, call it within your favorite text editor, and use it to do
+nearly everything.</p>
+<p>The below commands turn <code>doc.md</code>, a markdown document,
+into a PDF and HTML using LaTeX:</p>
+<pre><code># Markdown to PDF
+pandoc -s -o doc.pdf doc.md
+# Markdown to HTML
+pandoc -s -o doc.html doc.md</code></pre>
+<p>I use the below code, which includes a template for UCSD letterhead,
+to generate PDF letters of recommendation:</p>
+<pre><code>pandoc -s fname.md --pdf-engine=xelatex --from markdown --template $HOME/Documents/bin/pandoc/templates/letterrec.tex -o fname.pdf
+</code></pre>
+<p>And this code generated the HTML for this document, using a custom
+CSS (cascading stylesheets) document:</p>
+<pre><code>pandoc -s fname.md -H ~/Documents/bin/pandoc.css -o fname.html</code></pre>
+<pre><code>cd ~/Documents/docs
+find ~/Documents/text/docs -name &quot;*.md&quot; | while read ffname; do
+    filename=$(basename -- &quot;$ffname&quot;)
+    filedir=$(dirname -- &quot;$myfile&quot;)
+    fn=&quot;${filename%.*}&quot;
+    if [[ $ffname -nt ~/Documents/docs/$fn.html ]]; then
+        echo $fn
+            # Remove the flag from the file, and adjust the path for future compilation
+            ffname=&quot;/tmp/edfile.md&quot;
+            # Render the pdf
+            /opt/homebrew/bin/pandoc -s &quot;$ffname&quot; --pdf-engine=xelatex --from markdown --template $HOME/Documents/bin/pandoc/templates/genericdoc.tex -o &quot;$fn&quot;.pdf
+        fi
+        # Render the HTML
+        /opt/homebrew/bin/pandoc -s &quot;$ffname&quot; -H ~/Documents/bin/pandoc.css -o &quot;$fn&quot;.html
+    fi
+done</code></pre>
+<p>This, precisely, is how this document came to be. (Note that LaTeX
+does not wrap code blocks by default, read this bit in the HTML)</p>
+<h2 id="jupyter-exporting">Jupyter exporting</h2>
+<p>You can actually export Jupyter Notebooks to HTML, LaTeX, Markdown,
+Reveal.js using the ‘File -&gt; Save and Export Notebook as…’
+command.</p>
+<p>This allows your final ‘paper’ to effectively <em>be</em> your
+analysis, and allows you to directly generate tables and plots
+<em>into</em> your document. This is incredibly powerful.</p>
+</body>
+</html>
